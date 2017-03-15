@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite verbose="0" name="Failed suite [com.edge.CheneyOnline.TestCheneyOnline]">
+  <test name="Command line test(failed)">
+    <classes>
+      <class name="com.edge.CheneyOnline.TestCheneyOnline">
+        <methods>
+          <include name="BocaLago_Cheney"/>
+          <include name="ConchRep_Cheney"/>
+          <include name="Howleys_Cheney"/>
+          <include name="Wycliff_Cheney"/>
+          <include name="setup"/>
+          <include name="beforeTest"/>
+          <include name="ShulaBurgerPC_Cheney"/>
+          <include name="Wellington_Cheney"/>
+          <include name="CafeHeavenly_Cheney"/>
+          <include name="Oceans234_Cheney"/>
+          <include name="Woodfield_Cheney"/>
+          <include name="TrumpNational_Cheney"/>
+          <include name="Boynton_Cheney"/>
+          <include name="pretearDown"/>
+          <include name="TrumpIntl_Cheney"/>
+          <include name="ShulaBurgerKendall_Cheney"/>
+          <include name="AfterClass"/>
+        </methods>
+      </class> <!-- com.edge.CheneyOnline.TestCheneyOnline -->
+    </classes>
+  </test> <!-- Command line test(failed) -->
+</suite> <!-- Failed suite [com.edge.CheneyOnline.TestCheneyOnline] -->
