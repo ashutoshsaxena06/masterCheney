@@ -5,22 +5,10 @@
     <classes>
       <class name="com.edge.CheneyOnline.TestCheneyOnline">
         <methods>
-          <include name="BocaLago_Cheney"/>
-          <include name="ConchRep_Cheney"/>
-          <include name="Howleys_Cheney"/>
-          <include name="Wycliff_Cheney"/>
+          <include name="Wellington_Cheney"/>
           <include name="setup"/>
           <include name="beforeTest"/>
-          <include name="ShulaBurgerPC_Cheney"/>
-          <include name="Wellington_Cheney"/>
-          <include name="CafeHeavenly_Cheney"/>
-          <include name="Oceans234_Cheney"/>
-          <include name="Woodfield_Cheney"/>
-          <include name="TrumpNational_Cheney"/>
-          <include name="Boynton_Cheney"/>
           <include name="pretearDown"/>
-          <include name="TrumpIntl_Cheney"/>
-          <include name="ShulaBurgerKendall_Cheney"/>
           <include name="AfterClass"/>
         </methods>
       </class> <!-- com.edge.CheneyOnline.TestCheneyOnline -->
