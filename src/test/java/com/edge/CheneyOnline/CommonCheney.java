@@ -6,11 +6,14 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 public class CommonCheney {
 
@@ -26,11 +29,7 @@ public class CommonCheney {
 		
 		Thread.sleep(2000);
 		// Wait For Page To Loads
-		if (driver.getCurrentUrl().equalsIgnoreCase("https://sts.gemalto.com/adfs/ls/")) {
-			driver.findElement(By.xpath("//input[@id='userNameInput']")).sendKeys("ashsaxen@gemalto.com");
-			driver.findElement(By.xpath("//input[@id='passwordInput']")).sendKeys("Companyof4");
-			driver.findElement(By.xpath("//span[@id='submitButton']")).click();			
-		}
+
 		
 		// pass login credentials
 		wait = new WebDriverWait(driver, 30);
@@ -70,11 +69,16 @@ public class CommonCheney {
 			}
 
 		}
-
 		// Export grid button to show list
-		WebElement lnk_ExportGridBtn = wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//a[contains(@id,'ExportGridButton')]/span/*"))));
-		lnk_ExportGridBtn.click();
-		System.out.println("Clicked - Export Grid");
+		try {
+			driver.findElement(By.xpath("//a[contains(@id,'ExportGridButton')]/span/*")).click();
+			System.out.println("Clicked - Export Grid");
+		} catch (NoSuchElementException e1) {
+			Thread.sleep(3000);
+			driver.findElement(By.xpath("//a[contains(@id,'ExportGridButton')]/span/*")).click();
+			System.out.println("Clicked - Export Grid");
+			e1.printStackTrace();
+		}
 
 
 		// Click on option to select from Export Type
@@ -87,12 +91,13 @@ public class CommonCheney {
 		System.out.println("format choosen as Excel");
 		// div[@id='ExportTypeContainer']/div/ul/li[2]/a/span
 
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 
 		// Select columns for OG - Item no., Pack, Brand, Description, Price &
 		// caseUom
 
 		try {
+			Thread.sleep(2000);
 			ArrayList<String> removeColumns = new ArrayList<String>();
 			List<WebElement> OG_Col = driver.findElements(By.xpath("//ul[@id='Sortable']/*"));
 			System.out.println(OG_Col.size());
@@ -100,35 +105,32 @@ public class CommonCheney {
 			Iterator<WebElement> iterator = OG_Col.iterator();
 			while (iterator.hasNext()) {
 				WebElement element = (WebElement) iterator.next();
-				//Thread.sleep(2000);
-				
+				Thread.sleep(1000);
+			
 				Col_id = element.getAttribute("id");
 				if (Col_id.equalsIgnoreCase("DistributorNumber") || Col_id.equalsIgnoreCase("CasePack")
 						|| Col_id.equalsIgnoreCase("Brand") || Col_id.equalsIgnoreCase("Description")
 						|| Col_id.equalsIgnoreCase("CasePrice") || Col_id.equalsIgnoreCase("CaseUom")) {
 					System.out.println("selected column :- " + Col_id);
-					iterator.remove();
 				} 
 				
-				else {
-					
+				else {	
+					iterator.remove();
 					removeColumns.add(Col_id);
-
 				}
 			}
-
+			
 			System.out.println(removeColumns.size()+" and "+OG_Col.size());
+		Assert.assertEquals(OG_Col.size(), 6);
 			
 			for (int i = 0; i < removeColumns.size(); i++) {
 				WebElement ll_removeCol = wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//li[contains(@id,'"+ removeColumns.get(i) +"')]"))));// remove column
 				driver.findElement(By.xpath("//li[contains(@id,'"+ removeColumns.get(i) +"')]/table/tbody/tr/td[2]/img")).click();
-				Thread.sleep(5000);
+				Thread.sleep(3000);
 				System.out.println("removed column :- " + removeColumns.get(i) );
 			}
-		
-
-		} catch (StaleElementReferenceException e) {
-
+		} 
+		catch (StaleElementReferenceException e) {
 			e.printStackTrace();
 		}
 		catch (Exception e) {
@@ -144,10 +146,8 @@ public class CommonCheney {
 		WebElement lnk_Logout = wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//a[contains(.,'Logout')]"))));
 		lnk_Logout.click();
 		
-		Thread.sleep(5000);
-
+		Thread.sleep(3000);
 		return true;
-
 	}
 
 	public boolean CustomLoginCheney(WebDriver driver, String OGName, String usernameCBI, String passwordCBI)
@@ -159,11 +159,6 @@ public class CommonCheney {
 
 		Thread.sleep(2000);
 		// Wait For Page To Loads
-		if (driver.getCurrentUrl().equalsIgnoreCase("https://sts.gemalto.com/adfs/ls/")) {
-			driver.findElement(By.xpath("//input[@id='userNameInput']")).sendKeys("ashsaxen@gemalto.com");
-			driver.findElement(By.xpath("//input[@id='passwordInput']")).sendKeys("Companyof4");
-			driver.findElement(By.xpath("//span[@id='submitButton']")).click();			
-		}
 		
 		// pass login credentials
 		wait = new WebDriverWait(driver, 30);
@@ -192,7 +187,8 @@ public class CommonCheney {
 		List<WebElement> allElements = driver
 				.findElements(By.xpath("//a[contains(.,'Ordering')]/following-sibling::div/ul/li/*/*/div/a"));
 		System.out.println(allElements.size());
-
+		Thread.sleep(1000);
+		
 		for (WebElement element : allElements) {
 
 			if (element.getText().equalsIgnoreCase("Custom Order Guides")) {
@@ -205,16 +201,26 @@ public class CommonCheney {
 		}
 		
 		Thread.sleep(2000);
-		// Check and Select ListName
-		WebElement ListName = wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//td/a[contains(.,'" + OGName + "')]"))));
-		ListName.isDisplayed();
-		ListName.click();
+		driver.findElement(By.xpath("//td[2]/a[contains(.,'"+OGName+"')]")).click();		
 		
+		//Thread.sleep(2000);
 		// Export grid button to show list
-		WebElement lnk_ExportGridBtn = wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//a[contains(@id,'ExportGridButton')]/span/*"))));
-		lnk_ExportGridBtn.click();
-		System.out.println("Clicked - Export Grid");
+		try {
+			driver.findElement(By.xpath("//a[contains(@id,'ExportGridButton')]/span/*")).click();
+			System.out.println("Clicked - Export Grid");
+		} catch (NoSuchElementException e1) {
+			Thread.sleep(3000);
+			driver.findElement(By.xpath("//a[contains(@id,'ExportGridButton')]/span/*")).click();
+			System.out.println("Clicked - Export Grid");
+			e1.printStackTrace();
+		}catch (WebDriverException e) {
+			Thread.sleep(3000);
+			driver.findElement(By.xpath("//a[contains(@id,'ExportGridButton')]/span/*")).click();
+			System.out.println("Clicked - Export Grid");
+			e.printStackTrace();
+		}
 
+		Thread.sleep(1000);
 		// Click on option to select from Export Type
 		WebElement lnk_ExportTyp = wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//a[contains(@id,'ExportType')]/span/*"))));
 		lnk_ExportTyp.click();
@@ -231,6 +237,7 @@ public class CommonCheney {
 		// caseUom
 
 		try {
+			Thread.sleep(2000);
 			ArrayList<String> removeColumns = new ArrayList<String>();
 			List<WebElement> OG_Col = driver.findElements(By.xpath("//ul[@id='Sortable']/*"));
 			System.out.println(OG_Col.size());
@@ -238,30 +245,29 @@ public class CommonCheney {
 			Iterator<WebElement> iterator = OG_Col.iterator();
 			while (iterator.hasNext()) {
 				WebElement element = (WebElement) iterator.next();
-				//Thread.sleep(2000);
+				Thread.sleep(1000);
 				
 				Col_id = element.getAttribute("id");
-				if (Col_id.equalsIgnoreCase("DistributorNumber") || Col_id.equalsIgnoreCase("CasePack")
+				if (Col_id.equalsIgnoreCase("DistributorNumber") || Col_id.equalsIgnoreCase("Pack")
 						|| Col_id.equalsIgnoreCase("Brand") || Col_id.equalsIgnoreCase("Description")
 						|| Col_id.equalsIgnoreCase("CasePrice") || Col_id.equalsIgnoreCase("CaseUom")) {
 					System.out.println("selected column :- " + Col_id);
-					iterator.remove();
 				} 
 				
 				else {
-					
+					iterator.remove();
 					removeColumns.add(Col_id);
-
 				}
 			}
 
 			System.out.println(removeColumns.size()+" and "+OG_Col.size());
-			
-			for (int i = 0; i < removeColumns.size(); i++) {
-				
+			Assert.assertEquals(OG_Col.size(), 6);
+
+			for (int i = 0; i <removeColumns.size(); i++) {
 				WebElement ll_removeCol = wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//li[contains(@id,'"+ removeColumns.get(i) +"')]/table/tbody/tr/td[2]/img"))));// remove column
 				ll_removeCol.click();
 				System.out.println("removed column :- " + removeColumns.get(i) );
+				Thread.sleep(3000);
 			}
 			
 		} catch (StaleElementReferenceException e) {
