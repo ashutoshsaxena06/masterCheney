@@ -23,7 +23,7 @@ public class CommonCheney {
 	public boolean LoginCheney(WebDriver driver, String usernameCBI, String passwordCBI) throws InterruptedException {
 		// TODO Auto-generated method stub
 
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
 		// launch URL for iTrade
 		driver.get("http://www.procurement.itradenetwork.com/Platform/Membership/Login");
 		
@@ -80,7 +80,7 @@ public class CommonCheney {
 			e1.printStackTrace();
 		}
 
-
+		Thread.sleep(2000);
 		// Click on option to select from Export Type
 		WebElement lnk_ExportTyp = wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//a[contains(@id,'ExportType')]/span/*"))));
 		lnk_ExportTyp.click();
@@ -153,7 +153,6 @@ public class CommonCheney {
 	public boolean CustomLoginCheney(WebDriver driver, String OGName, String usernameCBI, String passwordCBI)
 			throws InterruptedException {
 
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		// launch URL for iTrade
 		driver.get("http://www.procurement.itradenetwork.com/Platform/Membership/Login");
 

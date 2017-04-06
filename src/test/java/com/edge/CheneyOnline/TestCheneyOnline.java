@@ -1,18 +1,15 @@
 package com.edge.CheneyOnline;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.util.framework.SendMailSSL;
-
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-
-import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 
 public class TestCheneyOnline extends CommonCheney {
 	private WebDriver driver;
@@ -30,13 +27,11 @@ public class TestCheneyOnline extends CommonCheney {
 	@BeforeMethod
 	public void beforeTest() {
 		System.out.println("***********StartTest*********");
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("start-maximized");
 		System.setProperty("webdriver.chrome.driver",
 				"C:\\Users\\Edge\\Downloads\\chromedriver_win32\\chromedriver.exe");
-		// RandomAction.setDownloadFilePath();
-		driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-		// BrowserAction.ClearBrowserCache(driver);
-		driver.manage().window().maximize();
+		driver = new ChromeDriver(options);
 
 	}
 
@@ -255,7 +250,7 @@ public class TestCheneyOnline extends CommonCheney {
 		// rename downloadeds
 		// String CurrentPath = RandomAction.setdownloadDir();
 		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
-		SendMailSSL.sendMailAction("Cheney Brothers", "Kee Grill Fish Bar");
+		SendMailSSL.sendMailAction("Cheney - Offline GP", "Kee Grill Restaurant");
 	}
 	
 	
