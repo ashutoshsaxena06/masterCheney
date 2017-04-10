@@ -3,7 +3,6 @@ package com.edge.CheneyOnline;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -17,8 +16,8 @@ import org.testng.Assert;
 
 public class CommonCheney {
 
-	WebDriver driver;
-	WebDriverWait wait;
+	public WebDriver driver;
+	public WebDriverWait wait;
 
 	public boolean LoginCheney(WebDriver driver, String usernameCBI, String passwordCBI) throws InterruptedException {
 		// TODO Auto-generated method stub
@@ -54,9 +53,11 @@ public class CommonCheney {
 		WebElement lnk_Ordering = wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//a[contains(.,'Ordering')]"))));
 		lnk_Ordering.click();
 		
+		Thread.sleep(2000);
+		
 		// **** Order Guide / Entire Order Guide Selection *** 
-		List<WebElement> allElements = wait.until(ExpectedConditions.visibilityOfAllElements(driver
-				.findElements(By.xpath("//a[contains(.,'Ordering')]/following-sibling::div/ul/li/*/*/div/a"))));
+		List<WebElement> allElements =driver
+				.findElements(By.xpath("//a[contains(.,'Ordering')]/following-sibling::div/ul/li/*/*/div/a"));
 		System.out.println(allElements.size());
 
 		for (WebElement element : allElements) {
@@ -181,6 +182,8 @@ public class CommonCheney {
 		// ordering
 		WebElement lnk_Ordering = wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//a[contains(.,'Ordering')]"))));
 		lnk_Ordering.click();
+		
+		Thread.sleep(2000);
 		
 		// **** Custom Order Guide Selection *** 
 		List<WebElement> allElements = driver
