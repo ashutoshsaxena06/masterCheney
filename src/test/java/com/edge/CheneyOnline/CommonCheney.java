@@ -111,7 +111,7 @@ public class CommonCheney {
 				Col_id = element.getAttribute("id");
 				if (Col_id.equalsIgnoreCase("DistributorNumber") || Col_id.equalsIgnoreCase("CasePack")
 						|| Col_id.equalsIgnoreCase("Brand") || Col_id.equalsIgnoreCase("Description")
-						|| Col_id.equalsIgnoreCase("CasePrice") || Col_id.equalsIgnoreCase("CaseUom")) {
+						|| Col_id.equalsIgnoreCase("CasePrice") || Col_id.equalsIgnoreCase("CaseUom") || Col_id.equals("ProductStatus")) {
 					System.out.println("selected column :- " + Col_id);
 				} 
 				
@@ -122,7 +122,7 @@ public class CommonCheney {
 			}
 			
 			System.out.println(removeColumns.size()+" and "+OG_Col.size());
-		Assert.assertEquals(OG_Col.size(), 6);
+		Assert.assertEquals(OG_Col.size(), 7);
 			
 			for (int i = 0; i < removeColumns.size(); i++) {
 				WebElement ll_removeCol = wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//li[contains(@id,'"+ removeColumns.get(i) +"')]"))));// remove column
