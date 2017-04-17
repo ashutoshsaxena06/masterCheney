@@ -9,6 +9,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import com.util.framework.RandomAction;
 import com.util.framework.SendMailSSL;
 
 public class TestCheneyOnline extends CommonCheney {
@@ -27,6 +28,7 @@ public class TestCheneyOnline extends CommonCheney {
 	@BeforeMethod
 	public void beforeTest() {
 		System.out.println("***********StartTest*********");
+		RandomAction.deleteFiles("C:\\Users\\Edge\\Downloads");
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("start-maximized");
 		System.setProperty("webdriver.chrome.driver",
