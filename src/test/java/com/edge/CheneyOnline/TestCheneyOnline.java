@@ -256,4 +256,15 @@ public class TestCheneyOnline extends CommonCheney {
 	}
 	
 	
+	@Test(priority = 17)
+	public void Lucilles_Cheney() throws InterruptedException{
+		
+		LoginCheney(driver, "60021442CBI", "Lbbq2144");
+		// check the flow to exports
+		// StepsToExportCheney(driver);
+		// rename downloadeds
+		// String CurrentPath = RandomAction.setdownloadDir();
+		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
+		SendMailSSL.sendMailAction("Cheney Brothers", "Lucille's BBQ");
+	}
 }
