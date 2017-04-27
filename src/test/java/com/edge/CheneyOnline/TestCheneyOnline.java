@@ -45,7 +45,7 @@ public class TestCheneyOnline extends CommonCheney {
 		}
 	}
 
-/*	@Test(priority = 1)
+	@Test(priority = 1)
 	public void Dada_Cheney() throws InterruptedException {
 		System.out.println("1, Dada_Cheney");
 		// check if login is success
@@ -266,5 +266,5 @@ public class TestCheneyOnline extends CommonCheney {
 		// String CurrentPath = RandomAction.setdownloadDir();
 		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
 		SendMailSSL.sendMailAction("Cheney Brothers", "Lucille's BBQ");
-	}*/
+	}
 }
