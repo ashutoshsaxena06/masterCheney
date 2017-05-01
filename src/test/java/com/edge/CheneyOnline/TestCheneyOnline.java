@@ -191,18 +191,19 @@ public class TestCheneyOnline extends CommonCheney {
 		SendMailSSL.sendMailAction("Cheney - Offline GP", "Trump National Golf Club");
 	}
 
-//	@Test(priority = 12)
-//	public void Wycliff_Cheney() throws InterruptedException {
-//		System.out.println("12, Wycliff_Cheney");
-//		// check if login is success
-//		LoginCheney(driver, "098697-01CBI", "Club201");
-//		// check the flow to exports
-//		// StepsToExportCheney(driver);
-//		// rename downloadeds
-//		// String CurrentPath = RandomAction.setdownloadDir();
-//		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
-//		SendMailSSL.sendMailAction("Cheney - Offline GP", "Wycliffe Golf & Country Club");
-//	}
+	// @Test(priority = 12)
+	// public void Wycliff_Cheney() throws InterruptedException {
+	// System.out.println("12, Wycliff_Cheney");
+	// // check if login is success
+	// LoginCheney(driver, "098697-01CBI", "Club201");
+	// // check the flow to exports
+	// // StepsToExportCheney(driver);
+	// // rename downloadeds
+	// // String CurrentPath = RandomAction.setdownloadDir();
+	// // File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
+	// SendMailSSL.sendMailAction("Cheney - Offline GP", "Wycliffe Golf &
+	// Country Club");
+	// }
 
 	@Test(priority = 13)
 	public void BocaLago_Cheney() throws InterruptedException {
@@ -241,24 +242,23 @@ public class TestCheneyOnline extends CommonCheney {
 		// String CurrentPath = RandomAction.setdownloadDir();
 		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
 		SendMailSSL.sendMailAction("Cheney Brothers, Inc", "The Conch Republic");
-	}	
-	
-	@Test(priority = 16)
-	public void KeeGrill_Cheney() throws InterruptedException{
-		
-		LoginCheney(driver, "60008181CBI", "Kegr8181");
-		// check the flow to exports
-		// StepsToExportCheney(driver);
-		// rename downloadeds
-		// String CurrentPath = RandomAction.setdownloadDir();
-		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
-		SendMailSSL.sendMailAction("Cheney - Offline GP", "Kee Grill Restaurant");
 	}
-	
-	
+
+//	@Test(priority = 16)
+//	public void KeeGrill_Cheney() throws InterruptedException {
+//
+//		LoginCheney(driver, "60008181CBI", "Kegr8181");
+//		// check the flow to exports
+//		// StepsToExportCheney(driver);
+//		// rename downloadeds
+//		// String CurrentPath = RandomAction.setdownloadDir();
+//		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
+//		SendMailSSL.sendMailAction("Cheney - Offline GP", "Kee Grill Restaurant");
+//	}
+
 	@Test(priority = 17)
-	public void Lucilles_Cheney() throws InterruptedException{
-		
+	public void Lucilles_Cheney() throws InterruptedException {
+
 		LoginCheney(driver, "60021442CBI", "Lbbq2144");
 		// check the flow to exports
 		// StepsToExportCheney(driver);
