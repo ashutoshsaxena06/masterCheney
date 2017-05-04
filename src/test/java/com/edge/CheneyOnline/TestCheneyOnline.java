@@ -265,6 +265,6 @@ public class TestCheneyOnline extends CommonCheney {
 		// rename downloadeds
 		// String CurrentPath = RandomAction.setdownloadDir();
 		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
-		SendMailSSL.sendMailAction("Cheney Brothers", "Lucille's BBQ");
+		SendMailSSL.sendMailAction("Cheney Brothers Inc, Offline", "Lucille's BBQ");
 	}
 }
