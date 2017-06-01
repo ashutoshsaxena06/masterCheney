@@ -244,17 +244,18 @@ public class TestCheneyOnline extends CommonCheney {
 		SendMailSSL.sendMailAction("Cheney Brothers, Inc", "The Conch Republic");
 	}
 
-//	@Test(priority = 16)
-//	public void KeeGrill_Cheney() throws InterruptedException {
-//
-//		LoginCheney(driver, "60008181CBI", "Kegr8181");
-//		// check the flow to exports
-//		// StepsToExportCheney(driver);
-//		// rename downloadeds
-//		// String CurrentPath = RandomAction.setdownloadDir();
-//		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
-//		SendMailSSL.sendMailAction("Cheney - Offline GP", "Kee Grill Restaurant");
-//	}
+	// @Test(priority = 16)
+	// public void KeeGrill_Cheney() throws InterruptedException {
+	//
+	// LoginCheney(driver, "60008181CBI", "Kegr8181");
+	// // check the flow to exports
+	// // StepsToExportCheney(driver);
+	// // rename downloadeds
+	// // String CurrentPath = RandomAction.setdownloadDir();
+	// // File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
+	// SendMailSSL.sendMailAction("Cheney - Offline GP", "Kee Grill
+	// Restaurant");
+	// }
 
 	@Test(priority = 17)
 	public void Lucilles_Cheney() throws InterruptedException {
@@ -267,7 +268,7 @@ public class TestCheneyOnline extends CommonCheney {
 		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
 		SendMailSSL.sendMailAction("Cheney Brothers Inc, Offline", "Lucille's BBQ");
 	}
-	
+
 	@Test(priority = 18)
 	public void SamHudsonBeachBar_Cheney() throws InterruptedException {
 		System.out.println("18, Sam80210");
@@ -280,4 +281,18 @@ public class TestCheneyOnline extends CommonCheney {
 		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
 		SendMailSSL.sendMailAction("Cheney - Offline GP", "Sams Hudson Beach Bar");
 	}
+
+	@Test(priority = 18)
+	public void OrangeBlossom_Cheney() throws InterruptedException {
+		System.out.println("18, Sam80210");
+		// check if login is success
+		LoginCheney(driver, "60008022CBI", "FMK123");
+		// check the flow to exports
+		// StepsToExportCheney(driver);
+		// rename downloadeds
+		// String CurrentPath = RandomAction.setdownloadDir();
+		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
+		SendMailSSL.sendMailAction("Cheney - Offline GP", "Orange Blossom Hills");
+	}
+
 }
