@@ -5,7 +5,7 @@
     <classes>
       <class name="com.edge.CheneyOnline.TestCheneyOnline">
         <methods>
-          <include name="Wycliff_Cheney"/>
+          <include name="Wellington_Cheney"/>
           <include name="setup"/>
           <include name="beforeTest"/>
           <include name="pretearDown"/>
