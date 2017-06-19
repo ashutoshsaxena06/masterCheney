@@ -271,7 +271,7 @@ public class TestCheneyOnline extends CommonCheney {
 
 	@Test(priority = 18)
 	public void SamHudsonBeachBar_Cheney() throws InterruptedException {
-		System.out.println("18, Sam80210");
+		System.out.println("18, SamHudsonBeachBar_Cheney");
 		// check if login is success
 		LoginCheney(driver, "080210-00CBI", "Sam80210");
 		// check the flow to exports
@@ -281,7 +281,19 @@ public class TestCheneyOnline extends CommonCheney {
 		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
 		SendMailSSL.sendMailAction("Cheney - Offline GP", "Sams Hudson Beach Bar");
 	}
-
+	
+	@Test(priority = 19)
+	public void BigBite_Cheney() throws InterruptedException {
+		System.out.println("19, BigBite_Cheney");
+		// check if login is success
+		LoginCheney(driver, "60010748CBI", "Bagd748");
+		// check the flow to exports
+		// StepsToExportCheney(driver);
+		// rename downloadeds
+		// String CurrentPath = RandomAction.setdownloadDir();
+		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
+		SendMailSSL.sendMailAction("Cheney - Offline GP", "Big Bite Bagel");
+	}
 //	@Test(priority = 18)
 //	public void OrangeBlossom_Cheney() throws InterruptedException {
 //		System.out.println("18, Sam80210");
