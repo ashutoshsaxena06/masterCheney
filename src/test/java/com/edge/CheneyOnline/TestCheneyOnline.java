@@ -289,28 +289,28 @@ public class TestCheneyOnline extends CommonCheney {
 	// Bar");
 	// }
 
-	@Test(priority = 17)
-	public void Lucilles_Cheney() throws InterruptedException {
-
-		LoginCheney(driver, "60021442CBI", "Lbbq2144");
-		// check the flow to exports
-		// StepsToExportCheney(driver);
-		// rename downloadeds
-		// String CurrentPath = RandomAction.setdownloadDir();
-		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
-		SendMailSSL.sendMailAction("Cheney Brothers Inc, Offline", "Lucille's BBQ");
-	}
-
-	@Test(priority = 19)
-	public void BigBite_Cheney() throws InterruptedException {
-		System.out.println("19, BigBite_Cheney");
-		// check if login is success
-		LoginCheney(driver, "60010748CBI", "Bagd748");
-		// check the flow to exports
-		// StepsToExportCheney(driver);
-		// rename downloadeds
-		// String CurrentPath = RandomAction.setdownloadDir();
-		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
-		SendMailSSL.sendMailAction("Cheney - Offline GP", "Big Bite Bagel");
-	}
+//	@Test(priority = 17)
+//	public void Lucilles_Cheney() throws InterruptedException {
+//
+//		LoginCheney(driver, "60021442CBI", "Lbbq2144");
+//		// check the flow to exports
+//		// StepsToExportCheney(driver);
+//		// rename downloadeds
+//		// String CurrentPath = RandomAction.setdownloadDir();
+//		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
+//		SendMailSSL.sendMailAction("Cheney Brothers Inc, Offline", "Lucille's BBQ");
+//	}
+//
+//	@Test(priority = 19)
+//	public void BigBite_Cheney() throws InterruptedException {
+//		System.out.println("19, BigBite_Cheney");
+//		// check if login is success
+//		LoginCheney(driver, "60010748CBI", "Bagd748");
+//		// check the flow to exports
+//		// StepsToExportCheney(driver);
+//		// rename downloadeds
+//		// String CurrentPath = RandomAction.setdownloadDir();
+//		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
+//		SendMailSSL.sendMailAction("Cheney - Offline GP", "Big Bite Bagel");
+//	}
 }
