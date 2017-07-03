@@ -298,7 +298,7 @@ public class TestCheneyOnline extends CommonCheney {
 	public void GUMBY_Cheney() throws InterruptedException {
 		System.out.println("19, GUMBY_Cheney");
 		// check if login is success
-		LoginCheney(driver, "039804-01CBI", "Newinstall1");
+		LoginCheney(driver, "039804-01CBI", "Chance1");
 		// check the flow to exports
 		// StepsToExportCheney(driver);
 		// rename downloadeds
