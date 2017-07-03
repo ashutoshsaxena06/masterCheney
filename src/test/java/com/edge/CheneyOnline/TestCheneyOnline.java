@@ -294,6 +294,19 @@ public class TestCheneyOnline extends CommonCheney {
 		SendMailSSL.sendMailAction("Cheney - Offline GP", "Big Bite Bagel");
 	}
 	
+	@Test(priority = 20)
+	public void GUMBY_Cheney() throws InterruptedException {
+		System.out.println("19, GUMBY_Cheney");
+		// check if login is success
+		LoginCheney(driver, "039804-01CBI", "Newinstall1");
+		// check the flow to exports
+		// StepsToExportCheney(driver);
+		// rename downloadeds
+		// String CurrentPath = RandomAction.setdownloadDir();
+		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
+		SendMailSSL.sendMailAction("Cheney - Offline GP", "Gumby's Pizza");
+	}
+	
 //	@Test(priority = 18)
 //	public void OrangeBlossom_Cheney() throws InterruptedException {
 //		System.out.println("18, Sam80210");
