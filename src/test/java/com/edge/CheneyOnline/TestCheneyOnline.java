@@ -331,6 +331,21 @@ public class TestCheneyOnline extends CommonCheney {
 		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
 		SendMailSSL.sendMailAction("Cheney Brothers Inc, Offline", "Lucille's BBQ-East Boynton");
 	}
+	
+	
+	@Test(priority = 22)
+	public void Evans_Cheney() throws InterruptedException {
+		
+		System.out.println("22, Evans_Cheney");
+		LoginCheney(driver, "013919-00CBI", "Evans01");
+		// check the flow to exports
+		// StepsToExportCheney(driver);
+		// rename downloadeds
+		// String CurrentPath = RandomAction.setdownloadDir();
+		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
+		SendMailSSL.sendMailAction("Cheney - Offline GP", "Evans Prairie CC");
+	}
+	
  
 
 }
