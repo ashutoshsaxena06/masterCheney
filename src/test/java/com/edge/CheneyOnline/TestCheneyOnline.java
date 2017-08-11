@@ -352,7 +352,7 @@ public class TestCheneyOnline extends CommonCheney {
 	public void Ibis_Club_Cheney() throws InterruptedException {
 
 		System.out.println("23, Ibis_Club_Cheney");
-		LoginCheney(driver, "047507-01cbi", "Badger1");
+		CustomLoginCheney(driver,"CLUB 2017", "047507-01cbi", "Badger1");
 		// check the flow to exports
 		// StepsToExportCheney(driver);	
 		// rename downloadeds
@@ -365,7 +365,7 @@ public class TestCheneyOnline extends CommonCheney {
 	public void Ibis_Golf_Cheney() throws InterruptedException {
 
 		System.out.println("24, Ibis_Golf_Cheney");
-		LoginCheney(driver, "047507-02cbi", "Badger2");
+		CustomLoginCheney(driver,"GOLF 2017", "047507-02cbi", "Badger2");
 		// check the flow to exports
 		// StepsToExportCheney(driver);
 		// rename downloadeds
@@ -378,7 +378,7 @@ public class TestCheneyOnline extends CommonCheney {
 	public void Ibis_Tennis_Cheney() throws InterruptedException {
 
 		System.out.println("25, Ibis_Tennis_Cheney");
-		LoginCheney(driver, "047507-03cbi", "Badger3");
+		CustomLoginCheney(driver,"TENNIS 2017","047507-03cbi", "Badger3");
 		// check the flow to exports
 		// StepsToExportCheney(driver);
 		// rename downloadeds
@@ -391,7 +391,7 @@ public class TestCheneyOnline extends CommonCheney {
 	public void Ibis_GolfMaint_Cheney() throws InterruptedException {
 
 		System.out.println("26, Ibis_GolfMaint_Cheney");
-		LoginCheney(driver, "047507-04cbi", "Badger4");
+		CustomLoginCheney(driver,"GCM 2017", "047507-04cbi", "Badger4");
 		// check the flow to exports
 		// StepsToExportCheney(driver);
 		// rename downloadeds
@@ -404,7 +404,7 @@ public class TestCheneyOnline extends CommonCheney {
 	public void Ibis_Bistro_Cheney() throws InterruptedException {
 
 		System.out.println("27, Ibis_Bistro_Cheney");
-		LoginCheney(driver, "047507-05cbi", "Badger5");
+		CustomLoginCheney(driver,"BISTRO 2017", "047507-05cbi", "Badger5");
 		// check the flow to exports
 		// StepsToExportCheney(driver);
 		// rename downloadeds
