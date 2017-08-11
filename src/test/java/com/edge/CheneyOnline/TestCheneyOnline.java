@@ -191,18 +191,18 @@ public class TestCheneyOnline extends CommonCheney {
 		SendMailSSL.sendMailAction("Cheney - Offline GP", "Trump National Golf Club");
 	}
 
-	 @Test(priority = 12)
-	 public void Wycliff_Cheney() throws InterruptedException {
-	 System.out.println("12, Wycliff_Cheney");
-	 // check if login is success
-	 LoginCheney(driver, "098697-01CBI", "Wycliffe4650");
-	 // check the flow to exports
-	 // StepsToExportCheney(driver);
-	 // rename downloadeds
-	 // String CurrentPath = RandomAction.setdownloadDir();
-	 // File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
-	 SendMailSSL.sendMailAction("Cheney - Offline GP", "Wycliffe Golf & Country Club");
-	 }
+	@Test(priority = 12)
+	public void Wycliff_Cheney() throws InterruptedException {
+		System.out.println("12, Wycliff_Cheney");
+		// check if login is success
+		LoginCheney(driver, "098697-01CBI", "Wycliffe4650");
+		// check the flow to exports
+		// StepsToExportCheney(driver);
+		// rename downloadeds
+		// String CurrentPath = RandomAction.setdownloadDir();
+		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
+		SendMailSSL.sendMailAction("Cheney - Offline GP", "Wycliffe Golf & Country Club");
+	}
 
 	@Test(priority = 13)
 	public void BocaLago_Cheney() throws InterruptedException {
@@ -280,7 +280,7 @@ public class TestCheneyOnline extends CommonCheney {
 		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
 		SendMailSSL.sendMailAction("Cheney - Offline GP", "Sams Hudson Beach Bar");
 	}
-	
+
 	@Test(priority = 19)
 	public void BigBite_Cheney() throws InterruptedException {
 		System.out.println("19, BigBite_Cheney");
@@ -293,7 +293,7 @@ public class TestCheneyOnline extends CommonCheney {
 		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
 		SendMailSSL.sendMailAction("Cheney - Offline GP", "Big Bite Bagel");
 	}
-	
+
 	@Test(priority = 20)
 	public void GUMBY_Cheney() throws InterruptedException {
 		System.out.println("19, GUMBY_Cheney");
@@ -306,36 +306,38 @@ public class TestCheneyOnline extends CommonCheney {
 		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
 		SendMailSSL.sendMailAction("Cheney - Offline GP", "Gumby's Pizza");
 	}
-	
-//	@Test(priority = 18)
-//	public void OrangeBlossom_Cheney() throws InterruptedException {
-//		System.out.println("18, Sam80210");
-//		// check if login is success
-//		LoginCheney(driver, "60008022CBI", "FMK123");
-//		// check the flow to exports
-//		// StepsToExportCheney(driver);
-//		// rename downloadeds
-//		// String CurrentPath = RandomAction.setdownloadDir();
-//		SendMailSSL.sendMailAction("Cheney - Offline GP", "Orange Blossom Hills");
-//	}
-	
-	@Test(priority = 21)
-	public void LucillesBoynton_Cheney() throws InterruptedException {
-		
-		System.out.println("21, LucillesBoynton_Cheney");
-		LoginCheney(driver, "60007645CBI", "Lucilleseast1");
-		// check the flow to exports
-		// StepsToExportCheney(driver);
-		// rename downloadeds
-		// String CurrentPath = RandomAction.setdownloadDir();
-		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
-		SendMailSSL.sendMailAction("Cheney Brothers Inc, Offline", "Lucille's BBQ-East Boynton");
-	}
-	
-	
+
+	// @Test(priority = 18)
+	// public void OrangeBlossom_Cheney() throws InterruptedException {
+	// System.out.println("18, Sam80210");
+	// // check if login is success
+	// LoginCheney(driver, "60008022CBI", "FMK123");
+	// // check the flow to exports
+	// // StepsToExportCheney(driver);
+	// // rename downloadeds
+	// // String CurrentPath = RandomAction.setdownloadDir();
+	// SendMailSSL.sendMailAction("Cheney - Offline GP", "Orange Blossom
+	// Hills");
+	// }
+
+	// @Test(priority = 21)
+	// public void LucillesBoynton_Cheney() throws InterruptedException {
+	//
+	// System.out.println("21, LucillesBoynton_Cheney");
+	// LoginCheney(driver, "60007645CBI", "Lucilleseast1");
+	// // check the flow to exports
+	// // StepsToExportCheney(driver);
+	// // rename downloadeds
+	// // String CurrentPath = RandomAction.setdownloadDir();
+	// // File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
+	// SendMailSSL.sendMailAction("Cheney Brothers Inc, Offline", "Lucille's
+	// BBQ-East Boynton");
+	// }
+	//
+
 	@Test(priority = 22)
 	public void Evans_Cheney() throws InterruptedException {
-		
+
 		System.out.println("22, Evans_Cheney");
 		LoginCheney(driver, "013919-00CBI", "Evans01");
 		// check the flow to exports
@@ -345,7 +347,82 @@ public class TestCheneyOnline extends CommonCheney {
 		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
 		SendMailSSL.sendMailAction("Cheney - Offline GP", "Evans Prairie CC");
 	}
-	
- 
 
+	@Test(priority = 23)
+	public void Ibis_Club_Cheney() throws InterruptedException {
+
+		System.out.println("23, Ibis_Club_Cheney");
+		LoginCheney(driver, "047507-01cbi", "Badger1");
+		// check the flow to exports
+		// StepsToExportCheney(driver);	
+		// rename downloadeds
+		// String CurrentPath = RandomAction.setdownloadDir();
+		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
+		SendMailSSL.sendMailAction("Cheney - Offline GP", "The Club at Ibis - Club");
+	}
+
+	@Test(priority = 24)
+	public void Ibis_Golf_Cheney() throws InterruptedException {
+
+		System.out.println("24, Ibis_Golf_Cheney");
+		LoginCheney(driver, "047507-02cbi", "Badger2");
+		// check the flow to exports
+		// StepsToExportCheney(driver);
+		// rename downloadeds
+		// String CurrentPath = RandomAction.setdownloadDir();
+		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
+		SendMailSSL.sendMailAction("Cheney - Offline GP", "The Club at Ibis - Golf");
+	}
+
+	@Test(priority = 25)
+	public void Ibis_Tennis_Cheney() throws InterruptedException {
+
+		System.out.println("25, Ibis_Tennis_Cheney");
+		LoginCheney(driver, "047507-03cbi", "Badger3");
+		// check the flow to exports
+		// StepsToExportCheney(driver);
+		// rename downloadeds
+		// String CurrentPath = RandomAction.setdownloadDir();
+		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
+		SendMailSSL.sendMailAction("Cheney - Offline GP", "The Club at Ibis - Tennis");
+	}
+
+	@Test(priority = 26)
+	public void Ibis_GolfMaint_Cheney() throws InterruptedException {
+
+		System.out.println("26, Ibis_GolfMaint_Cheney");
+		LoginCheney(driver, "047507-04cbi", "Badger4");
+		// check the flow to exports
+		// StepsToExportCheney(driver);
+		// rename downloadeds
+		// String CurrentPath = RandomAction.setdownloadDir();
+		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
+		SendMailSSL.sendMailAction("Cheney - Offline GP", "The Club at Ibis - GolfMaint");
+	}
+
+	@Test(priority = 27)
+	public void Ibis_Bistro_Cheney() throws InterruptedException {
+
+		System.out.println("27, Ibis_Bistro_Cheney");
+		LoginCheney(driver, "047507-05cbi", "Badger5");
+		// check the flow to exports
+		// StepsToExportCheney(driver);
+		// rename downloadeds
+		// String CurrentPath = RandomAction.setdownloadDir();
+		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
+		SendMailSSL.sendMailAction("Cheney - Offline GP", "The Club at Ibis - Bistro");
+	}
+
+	@Test(priority = 28)
+	public void Mizner_Cheney() throws InterruptedException {
+
+		System.out.println("28, Mizner_Cheney");
+		LoginCheney(driver, "065294-01CBI", "Grocery15");
+		// check the flow to exports
+		// StepsToExportCheney(driver);
+		// rename downloadeds
+		// String CurrentPath = RandomAction.setdownloadDir();
+		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
+		SendMailSSL.sendMailAction("Cheney - Offline GP", "Mizner Country Club");
+	}
 }
