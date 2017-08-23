@@ -204,18 +204,18 @@ public class TestCheneyOnline extends CommonCheney {
 		SendMailSSL.sendMailAction("Cheney - Offline GP", "Wycliffe Golf & Country Club");
 	}
 
-	@Test(priority = 13)
-	public void BocaLago_Cheney() throws InterruptedException {
-		System.out.println("13, BocaLago_Cheney");
-		// check if login is success
-		LoginCheney(driver, "016236-01CBI", "BL16236");
-		// check the flow to exports
-		// StepsToExportCheney(driver);
-		// rename downloadeds
-		// String CurrentPath = RandomAction.setdownloadDir();
-		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
-		SendMailSSL.sendMailAction("Cheney Brothers", "Boca Lago Country Club");
-	}
+//	@Test(priority = 13)
+//	public void BocaLago_Cheney() throws InterruptedException {
+//		System.out.println("13, BocaLago_Cheney");
+//		// check if login is success
+//		LoginCheney(driver, "016236-01CBI", "BL16236");
+//		// check the flow to exports
+//		// StepsToExportCheney(driver);
+//		// rename downloadeds
+//		// String CurrentPath = RandomAction.setdownloadDir();
+//		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
+//		SendMailSSL.sendMailAction("Cheney Brothers", "Boca Lago Country Club");
+//	}
 
 	@Test(priority = 14)
 	public void Woodfield_Cheney() throws InterruptedException {
