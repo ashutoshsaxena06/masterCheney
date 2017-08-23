@@ -96,7 +96,7 @@ public class TestCheneyOnline extends CommonCheney {
 		// rename downloadeds
 		// String CurrentPath = RandomAction.setdownloadDir();
 		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
-		SendMailSSL.sendMailAction("Cheney - Offline GP", "Agliolio Boynton Italian Bistro & Bar");
+	//	SendMailSSL.sendMailAction("Cheney - Offline GP", "Agliolio Boynton Italian Bistro & Bar");
 		SendMailSSL.sendMailAction("Cheney - Offline GP", "Agliolio Restaurant Boynton");
 		
 	}
@@ -111,7 +111,7 @@ public class TestCheneyOnline extends CommonCheney {
 		// rename downloadeds
 		// String CurrentPath = RandomAction.setdownloadDir();
 		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
-		SendMailSSL.sendMailAction("Cheney - Offline GP", "Agliolio Wellington Fresh Pasta & Wine");
+	//	SendMailSSL.sendMailAction("Cheney - Offline GP", "Agliolio Wellington Fresh Pasta & Wine");
 		SendMailSSL.sendMailAction("Cheney - Offline GP", "Agliolio Restaurant Wellington");
 	}
 
