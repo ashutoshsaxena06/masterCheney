@@ -87,7 +87,7 @@ public class TestCheneyOnline extends CommonCheney {
 	// }
 
 	@Test(priority = 4)
-	public void Boynton_Cheney() throws InterruptedException {
+	public void Agliolio_Restaurant_Cheney() throws InterruptedException {
 		System.out.println("4, Boynton_Cheney");
 		// check if login is success
 		LoginCheney(driver, "011171-01CBI", "Pasta4930");
@@ -97,23 +97,23 @@ public class TestCheneyOnline extends CommonCheney {
 		// String CurrentPath = RandomAction.setdownloadDir();
 		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
 	//	SendMailSSL.sendMailAction("Cheney - Offline GP", "Agliolio Boynton Italian Bistro & Bar");
-		SendMailSSL.sendMailAction("Cheney - Offline GP", "Agliolio Restaurant Boynton");
+		SendMailSSL.sendMailAction("Cheney - Offline GP", "Agliolio Restaurant");
 		
 	}
 
-	@Test(priority = 5)
-	public void Wellington_Cheney() throws InterruptedException {
-		System.out.println("5, Wellington_Cheney");
-		// check if login is success
-		LoginCheney(driver, "011170-01CBI", "Fresh3847");
-		// check the flow to exports
-		// StepsToExportCheney(driver);
-		// rename downloadeds
-		// String CurrentPath = RandomAction.setdownloadDir();
-		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
-	//	SendMailSSL.sendMailAction("Cheney - Offline GP", "Agliolio Wellington Fresh Pasta & Wine");
-		SendMailSSL.sendMailAction("Cheney - Offline GP", "Agliolio Restaurant Wellington");
-	}
+//	@Test(priority = 5)
+//	public void Wellington_Cheney() throws InterruptedException {
+//		System.out.println("5, Wellington_Cheney");
+//		// check if login is success
+//		LoginCheney(driver, "011170-01CBI", "Fresh3847");
+//		// check the flow to exports
+//		// StepsToExportCheney(driver);
+//		// rename downloadeds
+//		// String CurrentPath = RandomAction.setdownloadDir();
+//		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
+//	//	SendMailSSL.sendMailAction("Cheney - Offline GP", "Agliolio Wellington Fresh Pasta & Wine");
+//		SendMailSSL.sendMailAction("Cheney - Offline GP", "Agliolio Restaurant Wellington");
+//	}
 
 	// @Test(priority = 6)
 	// public void CafeHeavenly_Cheney() throws InterruptedException {
