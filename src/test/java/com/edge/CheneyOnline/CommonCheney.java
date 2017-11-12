@@ -58,23 +58,30 @@ public class CommonCheney {
 		Thread.sleep(2000);
 
 		// **** Order Guide / Entire Order Guide Selection ***
-		List<WebElement> allElements = driver
-				.findElements(By.xpath("//a[contains(.,'Ordering')]/following-sibling::div/ul/li/*/*/div/a"));
-		System.out.println(allElements.size());
+		try {
+			List<WebElement> allElements = driver
+					.findElements(By.xpath("//a[contains(.,'Ordering')]/following-sibling::div/ul/li/*/*/div/a"));
+			System.out.println(allElements.size());
 
-		for (WebElement element : allElements) {
-			System.out.println(element.getText());
-			if (element.getText().equalsIgnoreCase("Order Guide / Entire Order Guide")
-					|| element.getText().equalsIgnoreCase("Order Guides")) {
-				String OG_text = element.getText();
-				element.click();
-				System.out.println("Clicked on link - " + OG_text);
-				break;
+			for (WebElement element : allElements) {
+				System.out.println(element.getText());
+				if (element.getText().equalsIgnoreCase("Order Guide / Entire Order Guide")
+						|| element.getText().equalsIgnoreCase("Order Guides")) {
+					String OG_text = element.getText();
+					element.click();
+					System.out.println("Clicked on link - " + OG_text);
+					break;
+				}
+
 			}
-
+		} catch (Exception e2) {
+			e2.printStackTrace();
+			System.out.println("using URL for Order Guide");
+			driver.get("http://www.procurement.itradenetwork.com/Platform/Products/BrowseProducts/Browse");
 		}
 		// Export grid button to show list
 		try {
+			Thread.sleep(3000);
 			wait.until(ExpectedConditions
 					.elementToBeClickable(driver.findElement(By.xpath("//a[contains(@id,'ExportGridButton')]/span/*"))))
 					.click();
