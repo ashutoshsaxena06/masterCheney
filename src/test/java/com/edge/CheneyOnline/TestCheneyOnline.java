@@ -425,4 +425,17 @@ public class TestCheneyOnline extends CommonCheney {
 		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
 		SendMailSSL.sendMailAction("Cheney - Offline GP", "Mizner Country Club");
 	}
+	
+	@Test(priority = 29)
+	public void SQ1_Cheney() throws InterruptedException {
+
+		System.out.println("28, SQ1_Cheney");
+		LoginCheney(driver, "60036371CBI", "SQ16371");
+		// check the flow to exports
+		// StepsToExportCheney(driver);
+		// rename downloadeds
+		// String CurrentPath = RandomAction.setdownloadDir();
+		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
+		SendMailSSL.sendMailAction("Cheney - Offline GP", "SQ1");
+	}
 }
