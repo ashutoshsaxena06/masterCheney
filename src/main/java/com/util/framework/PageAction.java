@@ -14,15 +14,18 @@ import java.util.List;
 
 import org.apache.commons.io.comparator.LastModifiedFileComparator;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
+import org.apache.xmlbeans.impl.xb.xsdschema.impl.IncludeDocumentImpl;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-public class RandomAction {
+public class PageAction {
 
 	/*
 	 * public static File WaitForNewFile(Path folder, String extension, int
@@ -38,8 +41,11 @@ public class RandomAction {
 	 * file; } } } return null; }
 	 */
 	// enter email id where you need to send email
+	
+	public static WebDriver driver;
+	
 	public static String getDate() {
-		DateFormat df = new SimpleDateFormat("ddMMyyyy");
+		DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 		Calendar calobj = Calendar.getInstance();
 		System.out.println(df.format(calobj.getTime()));
 		String CurrentDate = df.format(calobj.getTime());
@@ -168,6 +174,28 @@ public class RandomAction {
 				file.delete();
 		System.out.println("All files deleted from folder :-" + path);
 
+	}
+	
+	public static WebDriver openBrowser(String browser, String path){
+		if (browser.equalsIgnoreCase("ie")) {
+			System.setProperty("webdriver.ie.driver",
+					"C:\\Users\\Edge\\Downloads\\chromedriver_win32\\ie.exe");
+			driver = new InternetExplorerDriver();
+			}
+		else if (browser.equalsIgnoreCase("ff")) {
+			driver = new FirefoxDriver();
+		}
+		else {
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("start-maximized");
+			System.setProperty("webdriver.chrome.driver",
+					path);
+//
+//			System.setProperty("webdriver.chrome.driver",
+//					"C:\\Users\\Edge\\Downloads\\chromedriver_win32\\chromedriver.exe");
+			driver = new ChromeDriver(options);
+		}
+		return driver;		
 	}
 
 }
