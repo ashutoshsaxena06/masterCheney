@@ -1,6 +1,7 @@
 package com.util.framework;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.util.Properties;
 
 import javax.activation.DataHandler;
@@ -17,10 +18,10 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
-
-import resources.Constant;
+import org.apache.log4j.Logger;
 
 public class SendMailSSL {
+	private final static Logger logger = Logger.getLogger(SendMailSSL.class);
 
 	public static  Session createConnection() throws MessagingException {
 		// Create IMAPSSLStore object
@@ -33,7 +34,7 @@ public class SendMailSSL {
 
 		// All sysout statements are used for testing, have to remove them
 		// while implementation
-		System.out.println("Connecting to gmail...");
+		logger.info("Connecting to gmail...");
 		
 		Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
@@ -58,30 +59,32 @@ public class SendMailSSL {
 	 * urlName);
 	 * 
 	 * // All sysout statements are used for testing, have to remove them //
-	 * while implementation System.out.println("Connecting to gmail...");
+	 * while implementation logger.info("Connecting to gmail...");
 	 * 
 	 * // Connect to GMail, enter user name and password here
 	 * store.connect("imap.gmail.com", Constant.GmailUser,
 	 * Constant.GmailPassword);
 	 * 
-	 * System.out.println("Connected to - " + store);
+	 * logger.info("Connected to - " + store);
 	 * 
 	 * sendMailAction(session, Constant.GmailUser, Constant.GmailPassword);
 	 * 
-	 * System.out.println("send mail success"); return store; }
+	 * logger.info("send mail success"); return store; }
 	 */
 
 	public static void sendMailAction(String PurveyorName, String Restaurantname ) {
-		String to = Constant.sendMailTo;
-		String user = Constant.sendMailFrom;// change
-																	// accordingly
 		try {
+			Properties Constant = new Properties();
+			Constant.load(new FileInputStream("Config.properties"));
+			String to = Constant.getProperty("sendMailTo");
+			String user = Constant.getProperty("sendMailFrom");// change
+																		// accordingly
 			// get connection
 			Session session = createConnection();
 			//String filepath = RandomAction.setdownloadDir();
-			File GFS_OG = RandomAction.getLatestFilefromDir("C:\\Users\\Edge\\Downloads\\");
+			File GFS_OG = PageAction.getLatestFilefromDir("C:\\Users\\Edge\\Downloads\\");
 			String filename = GFS_OG.getAbsolutePath();
-			System.out.println(filename);
+			logger.info(filename);
 			
 			MimeMessage message = new MimeMessage(session);
 		//	message.setFrom(new InternetAddress(user));
@@ -98,7 +101,7 @@ public class SendMailSSL {
 			// Subject of mails
 			message.setSubject("OnLineMacro :: " + PurveyorName + " :: " + Restaurantname);
 			// Body of mails
-			message.setContent("GFS OG export- date & time : " + RandomAction.getDate(), "text/html");
+			message.setContent("GFS OG export- date & time : " + PageAction.getDate(), "text/html");
 
 			//message.setText();
 
@@ -127,7 +130,7 @@ public class SendMailSSL {
 			 */
 			Transport.send(message, messageBodyPart1.getAllRecipients());
 
-			System.out.println("Message send success");
+			logger.info("Message send success");
 
 		} catch (AddressException e) {
 			// TODO Auto-generated catch block
@@ -136,8 +139,65 @@ public class SendMailSSL {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			logger.info(e.getMessage());
 			// TODO: handle exception
+		}
+
+	}
+	public static void sendReport(String Subject, String filename ) {
+		try {
+			Properties Constant = new Properties();
+			Constant.load(new FileInputStream("Config.properties"));
+			String to = Constant.getProperty("reportTo");
+			String user = Constant.getProperty("sendMailFrom");// change
+																		// accordingly
+			// get connection
+			Session session = createConnection();
+		
+			MimeMessage message = new MimeMessage(session);
+		
+
+			MimeMessage messageBodyPart1 = new MimeMessage(session);
+			messageBodyPart1.setFrom(new InternetAddress(user));// change
+			// accordingly
+			messageBodyPart1.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+
+
+			// Subject of mails
+			message.setSubject(Subject);
+			// Body of mails
+			message.setContent("Attached is the report for the OG export on : " + PageAction.getDate(), "text/html");
+
+			//message.setText();
+
+			// 4) create new MimeBodyPart object and set DataHandler object to
+			// this object
+			MimeBodyPart messageBodyPart2 = new MimeBodyPart();
+
+			DataSource source = new FileDataSource(filename);
+			messageBodyPart2.setDataHandler(new DataHandler(source));
+			messageBodyPart2.setFileName(filename);
+			logger.info("Attached file - " +filename);
+
+			
+			Multipart multipart = new MimeMultipart();
+			multipart.addBodyPart(messageBodyPart2);
+
+			message.setContent(multipart);
+
+			Transport.send(message, messageBodyPart1.getAllRecipients());
+
+			logger.info("Message send success");
+
+		} catch (AddressException e) {
+			e.printStackTrace();
+			logger.info("Technical issue in sending reporting");
+		} catch (MessagingException e) {
+			e.printStackTrace();
+			logger.info("Technical issue in sending reporting");
+		} catch (Exception e) {
+			logger.info(e.getMessage());
+			logger.info("Technical issue in sending reporting");
 		}
 
 	}
