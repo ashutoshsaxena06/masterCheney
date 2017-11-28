@@ -22,6 +22,10 @@ import org.apache.log4j.Logger;
 
 public class SendMailSSL {
 	private final static Logger logger = Logger.getLogger(SendMailSSL.class);
+	
+	public static void main(String[] args) {
+		sendReport("Test mail", "C://Users//Ashu//Desktop//ExportEngineInput.xlsx");
+	}
 
 	public static  Session createConnection() throws MessagingException {
 		// Create IMAPSSLStore object
@@ -147,7 +151,7 @@ public class SendMailSSL {
 	public static void sendReport(String Subject, String filename ) {
 		try {
 			Properties Constant = new Properties();
-			Constant.load(new FileInputStream("Config.properties"));
+			Constant.load(new FileInputStream("C://Users//Ashu//git//masterCheney//src//test//resources//Config.properties"));
 			String to = Constant.getProperty("reportTo");
 			String user = Constant.getProperty("sendMailFrom");// change
 																		// accordingly
