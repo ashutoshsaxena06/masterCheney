@@ -11,10 +11,10 @@ import org.apache.log4j.Logger;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.openqa.selenium.WebDriverException;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -29,11 +29,12 @@ public class TestCheneyExecutor extends CommonCheney {
 	static int retry = 0;
 	public static int rowIndex;
 	public static String projectPath = System.getProperty("user.dir");
-	public static String inputFile = "C:\\Users\\Edge\\Desktop\\ExportEngineInput.xlsx";
-			// "C:\\Users\\Ashu\\Desktop\\ExportEngineInput.xlsx";
+	public static String inputFile = "C:\\Users\\Ashu\\Desktop\\ExportEngineInput.xlsx";
 	// projectPath + "\\config\\ExportEngineInput.xlsx";
-	public static String reportFile = "C:\\Users\\Edge\\Desktop\\ExportSummary_Cheney_"
-			+ new Date().toString().replace(":", "").replace(" ", "") + ".xlsx";
+	public static SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
+	public static String reportFile = "C:\\Users\\Ashu\\Desktop\\ExportSummary_Cheney_"+ new Date().toString().replace(":", "").replace(" ", "") + ".xlsx";
+			// for Edge - "C:\\Users\\Edge\\Desktop\\Reports\\CheneyOG_report\\ExportSummary_Cheney_" + PageAction.getDate().toString().replace(" ", "_");
+//			+ new Date().toString().replace(":", "").replace(" ", "") + ".xlsx";
 	// projectPath+ "\\Output_Summary\\ExportSummary_Cheney_" + new
 	// Date().toString().replace(":", "").replace(" ", "")+".xlsx";
 	public static int acno;
@@ -41,12 +42,11 @@ public class TestCheneyExecutor extends CommonCheney {
 	public static XSSFSheet inputsheet;
 	public static int AcColStatus, AcColdetail;
 	public static FileOutputStream out;
-	public static SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
 	public static int totalNoOfRows;
 	public static String folderDate;
 	public static String currList = "";
 	public static String emailMessageExport = "";
-	public static String path = "C:\\Users\\Edge\\Downloads\\chromedriver_win32\\chromedriver.exe";
+	public static String path = "C:\\Users\\Ashu\\Downloads\\chromedriver.exe";
 	public static String project = "Cheney";
 
 	private final static Logger logger = Logger.getLogger(TestCheneyExecutor.class);
@@ -64,8 +64,7 @@ public class TestCheneyExecutor extends CommonCheney {
 		inputsheet = exportworkbook.getSheet(project);
 		AcColStatus = ExcelFunctions.getColumnNumber("Export Status", inputsheet);
 		AcColdetail = ExcelFunctions.getColumnNumber("Detailed Export Status", inputsheet);
-		// to get the browser on which the UI test has to be performed.
-		driver = PageAction.openBrowser("Chrome",path);
+
 		logger.info("Exiting before data.");
 		// copy config file to report folder
 		// ExcelFunctions.copySheet(exportworkbook, , );
@@ -90,12 +89,20 @@ public class TestCheneyExecutor extends CommonCheney {
 		}
 	}
 
+	@BeforeMethod
+	public static void setUp() throws IOException {
+		// to get the browser on which the UI test has to be performed.
+		driver = PageAction.openBrowser("Chrome", path);
+		logger.info("Invoked browser .. ");
+	}
+
 	@AfterMethod
 	public static void writeExcel() throws IOException {
 		logger.info("Running Excel write method!");
 		out = new FileOutputStream(new File(reportFile));
 		exportworkbook.write(out);
 		acno++;
+		driver.close();
 	}
 
 	@DataProvider(name = "testData")
@@ -121,36 +128,32 @@ public class TestCheneyExecutor extends CommonCheney {
 	}
 
 	@Test(dataProvider = "testData")
-	public void Export_Mail_OG(
-			String active, 
-			String accountID, 
-			String purveyor, 
-			String restaurant_name,
-			String username,
-			String password, 
-			String listname, 
-			String exportstatus, 
-			String detailedstatus) {
+	public void Export_Mail_OG(String active, String accountID, String purveyor, String restaurant_name,
+			String username, String password, String listname, String exportstatus, String detailedstatus) {
 		Boolean result;
 		logger.info("Inside OG Export : Started exporting OG for different accounts");
 		XSSFCell cell1, cell2;
 		TestCheneyExecutor.rowIndex = Math.floorMod(TestCheneyExecutor.acno, TestCheneyExecutor.totalNoOfRows) + 1;
-		
-		System.out.println("Test Case test #"+TestCheneyExecutor.rowIndex);
-		cell1 = TestCheneyExecutor.exportworkbook.getSheet(project).getRow(TestCheneyExecutor.rowIndex).createCell(TestCheneyExecutor.AcColStatus);
+
+		System.out.println("Test Case test #" + TestCheneyExecutor.rowIndex);
+		cell1 = TestCheneyExecutor.exportworkbook.getSheet(project).getRow(TestCheneyExecutor.rowIndex)
+				.createCell(TestCheneyExecutor.AcColStatus);
 		cell1.setCellValue("");
-		cell2 = TestCheneyExecutor.exportworkbook.getSheet(project).getRow(TestCheneyExecutor.rowIndex).createCell(TestCheneyExecutor.AcColdetail);
+		cell2 = TestCheneyExecutor.exportworkbook.getSheet(project).getRow(TestCheneyExecutor.rowIndex)
+				.createCell(TestCheneyExecutor.AcColdetail);
 		cell2.setCellValue("");
-//		if((cell1=TestCheneyExecutor.exportworkbook.getSheet(project).getRow(TestCheneyExecutor.rowIndex).getCell(TestCheneyExecutor.AcColStatus))==null){
-//			cell1 = TestCheneyExecutor.exportworkbook.getSheet(project).getRow(TestCheneyExecutor.rowIndex).createCell(TestCheneyExecutor.AcColStatus);
-//			cell1.setCellValue("");
-//		}
-//		if((cell2=TestCheneyExecutor.exportworkbook.getSheet(project).getRow(TestCheneyExecutor.rowIndex).getCell(TestCheneyExecutor.AcColdetail))==null){
-//			cell2 = TestCheneyExecutor.exportworkbook.getSheet(project).getRow(TestCheneyExecutor.rowIndex).createCell(TestCheneyExecutor.AcColdetail);
-//			cell2.setCellValue("");
-//		}
-		exportstatus=cell1.getStringCellValue();
-		detailedstatus=cell2.getStringCellValue();
+		// if((cell1=TestCheneyExecutor.exportworkbook.getSheet(project).getRow(TestCheneyExecutor.rowIndex).getCell(TestCheneyExecutor.AcColStatus))==null){
+		// cell1 =
+		// TestCheneyExecutor.exportworkbook.getSheet(project).getRow(TestCheneyExecutor.rowIndex).createCell(TestCheneyExecutor.AcColStatus);
+		// cell1.setCellValue("");
+		// }
+		// if((cell2=TestCheneyExecutor.exportworkbook.getSheet(project).getRow(TestCheneyExecutor.rowIndex).getCell(TestCheneyExecutor.AcColdetail))==null){
+		// cell2 =
+		// TestCheneyExecutor.exportworkbook.getSheet(project).getRow(TestCheneyExecutor.rowIndex).createCell(TestCheneyExecutor.AcColdetail);
+		// cell2.setCellValue("");
+		// }
+		exportstatus = cell1.getStringCellValue();
+		detailedstatus = cell2.getStringCellValue();
 
 		try {
 			if (active.equalsIgnoreCase("Yes")) {
@@ -178,31 +181,29 @@ public class TestCheneyExecutor extends CommonCheney {
 			}
 			cell1.setCellValue(exportstatus);
 			cell2.setCellValue(detailedstatus);
-			
+
 			logger.info("Exiting test method");
-			
-		}catch (WebDriverException ue) {
-			ue.printStackTrace();
-			driver = PageAction.openBrowser("Chrome",path);
-			logger.info("Re-invoked browser instance");
+
 		} catch (Exception e) {
 			e.printStackTrace();
+			exportstatus = "Failed";
+			detailedstatus = "Some technical issue ocurred during export : "+ e.getMessage();
+			cell1.setCellValue(exportstatus);
+			cell2.setCellValue(detailedstatus);
+			logger.info("Technical issue occured during export for restaurant - "+restaurant_name);
 		}
 		logger.info(emailMessageExport.trim());
 	}
 
-	
 	////////////////////////////////////////////////
 	@AfterClass
 	public static void sendMail() {
 		try {
-			String emailMsg = "Daily "+ project +" OG Export Status:\n";
-			if (!emailMessageExport.equals("")) {
-				emailMsg = emailMsg + "\n" + sdf + ":\n" + emailMessageExport;
-			}
+			String emailMsg = "Daily " + project + " OG Export Status:\n" + new Date().toString();
+			
 			SendMailSSL.sendReport(emailMsg, reportFile);
 			logger.info("Email Sent with Attachment");
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
