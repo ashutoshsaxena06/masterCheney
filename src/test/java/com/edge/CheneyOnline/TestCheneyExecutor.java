@@ -29,9 +29,10 @@ public class TestCheneyExecutor extends CommonCheney {
 	static int retry = 0;
 	public static int rowIndex;
 	public static String projectPath = System.getProperty("user.dir");
-	public static String inputFile = "C:\\Users\\Ashu\\Desktop\\ExportEngineInput.xlsx";
+	public static String inputFile = "C:\\Users\\Edge\\Desktop\\ExportEngineInput.xlsx";
+			// "C:\\Users\\Ashu\\Desktop\\ExportEngineInput.xlsx";
 	// projectPath + "\\config\\ExportEngineInput.xlsx";
-	public static String reportFile = "C:\\Users\\Ashu\\Desktop\\ExportSummary_Cheney_"
+	public static String reportFile = "C:\\Users\\Edge\\Desktop\\ExportSummary_Cheney_"
 			+ new Date().toString().replace(":", "").replace(" ", "") + ".xlsx";
 	// projectPath+ "\\Output_Summary\\ExportSummary_Cheney_" + new
 	// Date().toString().replace(":", "").replace(" ", "")+".xlsx";
@@ -45,7 +46,7 @@ public class TestCheneyExecutor extends CommonCheney {
 	public static String folderDate;
 	public static String currList = "";
 	public static String emailMessageExport = "";
-	public static String path = "C:\\Users\\Ashu\\Downloads\\chromedriver.exe";
+	public static String path = "C:\\Users\\Edge\\Downloads\\chromedriver_win32\\chromedriver.exe";
 	public static String project = "Cheney";
 
 	private final static Logger logger = Logger.getLogger(TestCheneyExecutor.class);
