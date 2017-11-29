@@ -83,7 +83,7 @@ public class SendMailSSL {
 			// get connection
 			Session session = createConnection();
 			// String filepath = RandomAction.setdownloadDir();
-			File GFS_OG = RandomAction.getLatestFilefromDir("C:\\Users\\Ashu\\Downloads\\");
+			File GFS_OG = RandomAction.getLatestFilefromDir("C:\\Users\\Edge\\Downloads\\");
 			String filename = GFS_OG.getAbsolutePath();
 			System.out.println(filename);
 
