@@ -202,7 +202,7 @@ public class TestCheneyExecutor extends CommonCheney {
 	@AfterClass
 	public static void sendMail() {
 		try {
-			String emailMsg = "Daily " + project + " OG Export Status:\n" + new Date().toString();
+			String emailMsg = "Daily " + project + " OG Export Status: " + RandomAction.getDate();
 			
 			SendMailSSL.sendReport(emailMsg, reportFile);
 			logger.info("Email Sent with Attachment");
