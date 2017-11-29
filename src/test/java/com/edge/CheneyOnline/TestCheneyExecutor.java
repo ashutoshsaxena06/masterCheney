@@ -21,6 +21,7 @@ import org.testng.annotations.Test;
 
 import com.util.framework.ExcelFunctions;
 import com.util.framework.PageAction;
+import com.util.framework.RandomAction;
 import com.util.framework.SendMailSSL;
 
 public class TestCheneyExecutor extends CommonCheney {
@@ -92,6 +93,8 @@ public class TestCheneyExecutor extends CommonCheney {
 	@BeforeMethod
 	public static void setUp() throws IOException {
 		// to get the browser on which the UI test has to be performed.
+		System.out.println("***********StartTest*********");
+		RandomAction.deleteFiles("C:\\Users\\Edge\\Downloads");
 		driver = PageAction.openBrowser("Chrome", path);
 		logger.info("Invoked browser .. ");
 	}
