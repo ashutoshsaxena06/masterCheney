@@ -104,7 +104,7 @@ public class SendMailSSL {
 			// Subject of mails
 			message.setSubject("OnLineMacro :: " + PurveyorName + " :: " + Restaurantname);
 			// Body of mails
-		//	message.setContent("GFS OG export- date & time : " + RandomAction.getDate(), "text/html");
+			message.setContent("GFS OG export- date & time : " + RandomAction.getDate(), "text/html");
 
 			// message.setText();
 
@@ -136,24 +136,25 @@ public class SendMailSSL {
 			System.out.println("Message send success");
 
 		} catch (AddressException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-			logger.info("Technical issue sending mail to macros for restaurant - " +Restaurantname);
 		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-			logger.info("Technical issue sending mail to macros for restaurant - " +Restaurantname);
 		} catch (Exception e) {
-			e.printStackTrace();
-			logger.info("Technical issue sending mail to macros forrestaurant  - " +Restaurantname);
+			System.out.println(e.getMessage());
+			// TODO: handle exception
 		}
+
 	}
 
 	public static void sendReport(String Subject, String filename) {
 		try {
-//			Properties Constant = new Properties();
-//			Constant.load(new FileInputStream("Config.properties"));
-//			String to = Constant.getProperty("reportTo");
-//			String user = Constant.getProperty("sendMailFrom");// change
-//																// accordingly
+			// Properties Constant = new Properties();
+			// Constant.load(new FileInputStream("Config.properties"));
+			// String to = Constant.getProperty("reportTo");
+			// String user = Constant.getProperty("sendMailFrom");// change
+			// // accordingly
 			String user = Constant.sendMailFrom;
 			String[] to = Constant.reportTo;
 			String cc = Constant.cc;
@@ -165,17 +166,16 @@ public class SendMailSSL {
 			MimeMessage messageBodyPart1 = new MimeMessage(session);
 			messageBodyPart1.setFrom(new InternetAddress(user));// change
 			// accordingly
-			
+
 			InternetAddress[] recipientAddress = new InternetAddress[to.length];
 			int counter = 0;
 			for (String recipient : to) {
-			    recipientAddress[counter] = new InternetAddress(recipient.trim());
-			    counter++;
+				recipientAddress[counter] = new InternetAddress(recipient.trim());
+				counter++;
 			}
-			
+
 			messageBodyPart1.addRecipients(Message.RecipientType.TO, recipientAddress);
 			messageBodyPart1.setRecipient(Message.RecipientType.CC, new InternetAddress(cc));
-
 
 			// Subject of mails
 			message.setSubject(Subject);
