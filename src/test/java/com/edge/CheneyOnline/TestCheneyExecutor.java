@@ -190,7 +190,7 @@ public class TestCheneyExecutor extends CommonCheney {
 		} catch (Exception e) {
 			e.printStackTrace();
 			exportstatus = "Failed";
-			detailedstatus = "Some technical issue ocurred during export : "+ e.getMessage();
+			detailedstatus = "Some technical issue ocurred during export";
 			cell1.setCellValue(exportstatus);
 			cell2.setCellValue(detailedstatus);
 			logger.info("Technical issue occured during export for restaurant - "+restaurant_name);
