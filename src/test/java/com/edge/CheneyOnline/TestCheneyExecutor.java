@@ -177,7 +177,6 @@ public class TestCheneyExecutor extends CommonCheney {
 					detailedstatus = "OG export Failed";
 				}
 				SendMailSSL.sendMailAction(purveyor.trim(), restaurant_name.trim());
-				logger.info("Mail send successfully for : " + restaurant_name);
 			} else {
 				logger.info(restaurant_name + " for purveryor " + purveyor + " is not Active !!");
 				exportstatus = "Not Active";

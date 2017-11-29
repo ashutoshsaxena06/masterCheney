@@ -83,7 +83,7 @@ public class SendMailSSL {
 			// get connection
 			Session session = createConnection();
 			// String filepath = RandomAction.setdownloadDir();
-			File GFS_OG = RandomAction.getLatestFilefromDir("C:\\Users\\Edge\\Downloads\\");
+			File GFS_OG = RandomAction.getLatestFilefromDir("C:\\Users\\Ashu\\Downloads\\");
 			String filename = GFS_OG.getAbsolutePath();
 			System.out.println(filename);
 
@@ -104,7 +104,7 @@ public class SendMailSSL {
 			// Subject of mails
 			message.setSubject("OnLineMacro :: " + PurveyorName + " :: " + Restaurantname);
 			// Body of mails
-			message.setContent("GFS OG export- date & time : " + RandomAction.getDate(), "text/html");
+			message.setContent("Cheney OG export- date & time : " + RandomAction.getDate(), "text");
 
 			// message.setText();
 
@@ -133,7 +133,7 @@ public class SendMailSSL {
 			 */
 			Transport.send(message, messageBodyPart1.getAllRecipients());
 
-			System.out.println("Message send success");
+			System.out.println("Message send success for " + Restaurantname);
 
 		} catch (AddressException e) {
 			// TODO Auto-generated catch block
@@ -142,6 +142,7 @@ public class SendMailSSL {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.out.println(e.getMessage());
 			// TODO: handle exception
 		}
@@ -180,7 +181,8 @@ public class SendMailSSL {
 			// Subject of mails
 			message.setSubject(Subject);
 			// Body of mails
-			message.setContent("Attached is the report for the OG export on : " + PageAction.getDate(), "text");
+			String date = PageAction.getDate();
+			message.setContent("Attached is the report for the OG export on : " + date, "text");
 
 			// message.setText();
 
