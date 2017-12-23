@@ -162,7 +162,7 @@ public class TestCheneyExecutor extends CommonCheney {
 			if (active.equalsIgnoreCase("Yes")) {
 				// if list is not empty
 				logger.info(restaurant_name + " for purveryor " + purveyor + " is Active !!");
-				if (listname != null && listname.length() == 0) {
+				if (listname != null && listname.length() != 0) {
 					result = LoginCheney(driver, listname.trim(), username.trim(), password.trim());
 				} else { // default OG
 					result = LoginCheney(driver, username.trim(), password.trim());
