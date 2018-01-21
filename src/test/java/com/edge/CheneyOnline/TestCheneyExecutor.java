@@ -19,10 +19,12 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.util.framework.CommonCheney;
 import com.util.framework.ExcelFunctions;
-import com.util.framework.PageAction;
 import com.util.framework.RandomAction;
 import com.util.framework.SendMailSSL;
+
+
 
 public class TestCheneyExecutor extends CommonCheney {
 
@@ -47,7 +49,7 @@ public class TestCheneyExecutor extends CommonCheney {
 	public static String folderDate;
 	public static String currList = "";
 	public static String emailMessageExport = "";
-	public static String path = "C:\\Users\\Edge\\Downloads\\chromedriver_win32\\chromedriver.exe";
+	public static String path = System.getProperty("user.home")+"\\Downloads\\chromedriver_win32\\chromedriver.exe";
 	public static String project = "Cheney";
 
 	private final static Logger logger = Logger.getLogger(TestCheneyExecutor.class);
@@ -94,8 +96,8 @@ public class TestCheneyExecutor extends CommonCheney {
 	public static void setUp() throws IOException {
 		// to get the browser on which the UI test has to be performed.
 		System.out.println("***********StartTest*********");
-		RandomAction.deleteFiles("C:\\Users\\Edge\\Downloads");
-		driver = PageAction.openBrowser("Chrome", path);
+		RandomAction.deleteFiles(System.getProperty("user.home")+"\\Downloads");
+		driver = RandomAction.openBrowser("Chrome", path);
 		logger.info("Invoked browser .. ");
 	}
 
@@ -177,7 +179,7 @@ public class TestCheneyExecutor extends CommonCheney {
 					detailedstatus = "OG export Failed";
 				}
 				Thread.sleep(8000);
-				SendMailSSL.sendMailAction(purveyor.trim(), restaurant_name.trim());
+				SendMailSSL.sendMailActionXlsx(purveyor.trim(), restaurant_name.trim());
 			} else {
 				logger.info(restaurant_name + " for purveryor " + purveyor + " is not Active !!");
 				exportstatus = "Not Active";
