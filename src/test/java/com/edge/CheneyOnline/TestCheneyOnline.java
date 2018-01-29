@@ -1,8 +1,5 @@
 package com.edge.CheneyOnline;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -45,17 +42,17 @@ public class TestCheneyOnline extends CommonCheney {
 	}
 
 	@Test
-	public void Agliolio_Restaurant_Cheney() throws InterruptedException {
-		System.out.println("1, Boynton_Cheney");
+	public void Lucille_Cheney() throws InterruptedException {
+		System.out.println("1, Lucille_Cheney");
 		// check if login is success
-		LoginCheney(driver, "011171-01CBI", "Pasta4930");
+		LoginCheney(driver, "60021442CBI", "Lbbq2144");
 		// check the flow to exports
 		// StepsToExportCheney(driver);
 		// rename downloadeds
 		// String CurrentPath = RandomAction.setdownloadDir();
 		// File GFS_OG = RandomAction.getLatestFilefromDir(CurrentPath);
 	//	SendMailSSL.sendMailAction("Cheney - Offline GP", "Agliolio Boynton Italian Bistro & Bar");
-		SendMailSSL.sendMailActionXlsx("Cheney - Offline GP", "Agliolio Restaurant");
+		SendMailSSL.sendMailActionXlsx("Cheney - Offline GP", "Lucille's BBQ");
 		
 	}
 
