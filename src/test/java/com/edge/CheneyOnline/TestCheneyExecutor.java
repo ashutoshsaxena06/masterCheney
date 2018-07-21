@@ -24,8 +24,6 @@ import com.util.framework.ExcelFunctions;
 import com.util.framework.RandomAction;
 import com.util.framework.SendMailSSL;
 
-
-
 public class TestCheneyExecutor extends CommonCheney {
 
 	static final int maxtry = 3;
@@ -35,9 +33,12 @@ public class TestCheneyExecutor extends CommonCheney {
 	public static String inputFile = "C:\\Users\\Edge\\Desktop\\ExportEngineInput.xlsx";
 	// projectPath + "\\config\\ExportEngineInput.xlsx";
 	public static SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
-	public static String reportFile = "C:\\Users\\Edge\\Desktop\\Reports\\CheneyOG_report\\ExportSummary_Cheney_"+ new Date().toString().replace(":", "").replace(" ", "") + ".xlsx";
-			// for Edge - "C:\\Users\\Edge\\Desktop\\Reports\\CheneyOG_report\\ExportSummary_Cheney_" + PageAction.getDate().toString().replace(" ", "_");
-//			+ new Date().toString().replace(":", "").replace(" ", "") + ".xlsx";
+	public static String reportFile = "C:\\Users\\Edge\\Desktop\\Reports\\CheneyOG_report\\ExportSummary_Cheney_"
+			+ new Date().toString().replace(":", "").replace(" ", "") + ".xlsx";
+	// for Edge -
+	// "C:\\Users\\Edge\\Desktop\\Reports\\CheneyOG_report\\ExportSummary_Cheney_" +
+	// PageAction.getDate().toString().replace(" ", "_");
+	// + new Date().toString().replace(":", "").replace(" ", "") + ".xlsx";
 	// projectPath+ "\\Output_Summary\\ExportSummary_Cheney_" + new
 	// Date().toString().replace(":", "").replace(" ", "")+".xlsx";
 	public static int acno;
@@ -49,7 +50,7 @@ public class TestCheneyExecutor extends CommonCheney {
 	public static String folderDate;
 	public static String currList = "";
 	public static String emailMessageExport = "";
-	public static String path = System.getProperty("user.home")+"\\Downloads\\chromedriver_win32\\chromedriver.exe";
+	public static String path = System.getProperty("user.home") + "\\Downloads\\chromedriver_win32\\chromedriver.exe";
 	public static String project = "Cheney";
 
 	private final static Logger logger = Logger.getLogger(TestCheneyExecutor.class);
@@ -96,7 +97,7 @@ public class TestCheneyExecutor extends CommonCheney {
 	public static void setUp() throws IOException {
 		// to get the browser on which the UI test has to be performed.
 		System.out.println("***********StartTest*********");
-		RandomAction.deleteFiles(System.getProperty("user.home")+"\\Downloads");
+		RandomAction.deleteFiles(System.getProperty("user.home") + "\\Downloads");
 		driver = RandomAction.openBrowser("Chrome", path);
 		logger.info("Invoked browser .. ");
 	}
@@ -107,7 +108,11 @@ public class TestCheneyExecutor extends CommonCheney {
 		out = new FileOutputStream(new File(reportFile));
 		exportworkbook.write(out);
 		acno++;
-		driver.close();
+		try {
+			driver.close();
+		} catch (Exception e) {
+			System.out.println("already closed");
+		}
 	}
 
 	@DataProvider(name = "testData")
@@ -195,7 +200,7 @@ public class TestCheneyExecutor extends CommonCheney {
 			detailedstatus = "Some technical issue ocurred during export";
 			cell1.setCellValue(exportstatus);
 			cell2.setCellValue(detailedstatus);
-			logger.info("Technical issue occured during export for restaurant - "+restaurant_name);
+			logger.info("Technical issue occured during export for restaurant - " + restaurant_name);
 		}
 		logger.info(emailMessageExport.trim());
 	}
@@ -205,7 +210,7 @@ public class TestCheneyExecutor extends CommonCheney {
 	public static void sendMail() {
 		try {
 			String emailMsg = "Daily " + project + " OG Export Status: " + RandomAction.getDate();
-			
+
 			SendMailSSL.sendReport(emailMsg, reportFile);
 			logger.info("Email Sent with Attachment");
 		} catch (Exception e) {
