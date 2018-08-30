@@ -3,6 +3,8 @@ package com.edge.CheneyOnline;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,12 +15,17 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 import com.util.framework.CommonCheney;
 import com.util.framework.ExcelFunctions;
 import com.util.framework.RandomAction;
@@ -52,8 +59,18 @@ public class TestCheneyExecutor extends CommonCheney {
 	public static String emailMessageExport = "";
 	public static String path = System.getProperty("user.home") + "\\Downloads\\chromedriver_win32\\chromedriver.exe";
 	public static String project = "Cheney";
-
+	public static ExtentReports er;
+	public static ExtentTest et;
 	private final static Logger logger = Logger.getLogger(TestCheneyExecutor.class);
+
+	@BeforeSuite
+	public static void set() throws IOException {
+		er = new ExtentReports(System.getProperty("user.dir") + File.separator + "extentsReport/Report.html", true);
+		er.addSystemInfo("Host Name", "Edge").addSystemInfo("Environment", "Windows Server")
+				.addSystemInfo("User Name", "Ashutosh Saxena").addSystemInfo("Project", project);
+		er.loadConfig(new File(System.getProperty("user.dir") + File.separator + "extents-config.xml"));
+		er.assignProject(project + " Online OG Export" );
+	}
 
 	@BeforeTest
 	public void beforeData() throws Exception {
@@ -107,6 +124,7 @@ public class TestCheneyExecutor extends CommonCheney {
 		logger.info("Running Excel write method!");
 		out = new FileOutputStream(new File(reportFile));
 		exportworkbook.write(out);
+		er.endTest(et);
 		acno++;
 		try {
 			driver.close();
@@ -164,11 +182,12 @@ public class TestCheneyExecutor extends CommonCheney {
 		// }
 		exportstatus = cell1.getStringCellValue();
 		detailedstatus = cell2.getStringCellValue();
-
+		et = er.startTest(restaurant_name);
 		try {
 			if (active.equalsIgnoreCase("Yes")) {
 				// if list is not empty
 				logger.info(restaurant_name + " for purveryor " + purveyor + " is Active !!");
+				et.log(LogStatus.INFO, restaurant_name + " and purveryor " + purveyor + " and listname is" +listname); 
 				if (listname != null && listname.length() != 0) {
 					result = LoginCheney(driver, listname.trim(), username.trim(), password.trim());
 				} else { // default OG
@@ -178,16 +197,19 @@ public class TestCheneyExecutor extends CommonCheney {
 					emailMessageExport = "Pass";
 					exportstatus = "Pass";
 					detailedstatus = "OG exported succesfully";
+					et.log(LogStatus.PASS, detailedstatus);
 					Thread.sleep(8000);
 					SendMailSSL.sendMailActionXlsx(purveyor.trim(), restaurant_name.trim());
 				} else {
 					emailMessageExport = "Failed";
 					exportstatus = "Failed";
 					detailedstatus = "OG export Failed";
+					et.log(LogStatus.FAIL, detailedstatus);
 				}
 			} else {
 				logger.info(restaurant_name + " for purveryor " + purveyor + " is not Active !!");
 				exportstatus = "Not Active";
+				et.log(LogStatus.SKIP, detailedstatus);
 			}
 			cell1.setCellValue(exportstatus);
 			cell2.setCellValue(detailedstatus);
@@ -195,12 +217,16 @@ public class TestCheneyExecutor extends CommonCheney {
 			logger.info("Exiting test method");
 
 		} catch (Exception e) {
+			StringWriter sw = new StringWriter();
+			PrintWriter pw = new PrintWriter(sw);
+			e.printStackTrace(pw);
 			e.printStackTrace();
 			exportstatus = "Failed";
 			detailedstatus = "Some technical issue ocurred during export";
 			cell1.setCellValue(exportstatus);
 			cell2.setCellValue(detailedstatus);
 			logger.info("Technical issue occured during export for restaurant - " + restaurant_name);
+			et.log(LogStatus.FAIL, pw.toString());
 		}
 		logger.info(emailMessageExport.trim());
 	}
@@ -217,6 +243,18 @@ public class TestCheneyExecutor extends CommonCheney {
 			e.printStackTrace();
 		}
 	}
+	
+	@AfterSuite
+	public static void close() {
+		try {
+		er.flush();
+		er.close();
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	////////////////////////////////////////////////////
 
 }
