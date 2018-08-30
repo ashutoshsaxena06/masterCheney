@@ -59,6 +59,7 @@ public class TestCheneyExecutor extends CommonCheney {
 	public static String emailMessageExport = "";
 	public static String path = System.getProperty("user.home") + "\\Downloads\\chromedriver_win32\\chromedriver.exe";
 	public static String project = "Cheney";
+	public static String extentReport = System.getProperty("user.dir") + File.separator + "extentsReport" + File.separator + "Report.html"; 
 	public static ExtentReports er;
 	public static ExtentTest et;
 	private final static Logger logger = Logger.getLogger(TestCheneyExecutor.class);
@@ -237,7 +238,7 @@ public class TestCheneyExecutor extends CommonCheney {
 		try {
 			String emailMsg = "Daily " + project + " OG Export Status: " + RandomAction.getDate();
 
-			SendMailSSL.sendReport(emailMsg, reportFile);
+			SendMailSSL.sendReports(emailMsg, reportFile,extentReport);
 			logger.info("Email Sent with Attachment");
 		} catch (Exception e) {
 			e.printStackTrace();
