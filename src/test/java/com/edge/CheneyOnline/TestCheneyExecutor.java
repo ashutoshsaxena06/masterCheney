@@ -221,13 +221,12 @@ public class TestCheneyExecutor extends CommonCheney {
 			StringWriter sw = new StringWriter();
 			PrintWriter pw = new PrintWriter(sw);
 			e.printStackTrace(pw);
-			e.printStackTrace();
 			exportstatus = "Failed";
 			detailedstatus = "Some technical issue ocurred during export";
 			cell1.setCellValue(exportstatus);
 			cell2.setCellValue(detailedstatus);
 			logger.info("Technical issue occured during export for restaurant - " + restaurant_name);
-			et.log(LogStatus.FAIL, pw.toString());
+			et.log(LogStatus.FAIL, sw.toString());
 		}
 		logger.info(emailMessageExport.trim());
 	}
