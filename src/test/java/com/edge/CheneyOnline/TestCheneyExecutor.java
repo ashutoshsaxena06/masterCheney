@@ -232,24 +232,21 @@ public class TestCheneyExecutor extends CommonCheney {
 	}
 
 	////////////////////////////////////////////////
-	@AfterClass
-	public static void sendMail() {
-		try {
-			String emailMsg = "Daily " + project + " OG Export Status: " + RandomAction.getDate();
-
-			SendMailSSL.sendReports(emailMsg, reportFile,extentReport);
-			logger.info("Email Sent with Attachment");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+//	@AfterClass
+//	public static void sendMail() {
+//
+//	}
 	
 	@AfterSuite
-	public static void close() {
+	public static void sendMailAndclose() {
 		try {
 		er.flush();
 		er.close();
 		
+		String emailMsg = "Daily " + project + " OG Export Status: " + RandomAction.getDate();
+
+		SendMailSSL.sendReports(emailMsg, reportFile,extentReport);
+		logger.info("Email Sent with Attachment");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
