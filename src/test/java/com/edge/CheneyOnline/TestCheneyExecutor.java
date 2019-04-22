@@ -226,7 +226,7 @@ public class TestCheneyExecutor extends CommonCheney {
 			cell1.setCellValue(exportstatus);
 			cell2.setCellValue(detailedstatus);
 			logger.info("Technical issue occured during export for restaurant - " + restaurant_name);
-			et.log(LogStatus.FAIL, sw.toString());
+			et.log(LogStatus.FAIL, exportstatus + " - "+ detailedstatus);
 		}
 		logger.info(emailMessageExport.trim());
 	}
