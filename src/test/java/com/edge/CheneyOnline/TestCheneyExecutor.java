@@ -245,7 +245,7 @@ public class TestCheneyExecutor extends CommonCheney {
 		
 		String emailMsg = "Daily " + project + " OG Export Status: " + RandomAction.getDate();
 
-		SendMailSSL.sendReports(emailMsg, reportFile,extentReport);
+		SendMailSSL.sendReports(emailMsg, reportFile);
 		logger.info("Email Sent with Attachment");
 		} catch (Exception e) {
 			e.printStackTrace();
