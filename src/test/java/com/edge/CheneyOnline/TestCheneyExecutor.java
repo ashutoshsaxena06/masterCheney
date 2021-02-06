@@ -128,7 +128,7 @@ public class TestCheneyExecutor extends CommonCheney {
 		er.endTest(et);
 		acno++;
 		try {
-			driver.close();
+			driver.quit();
 		} catch (Exception e) {
 			System.out.println("already closed");
 		}
